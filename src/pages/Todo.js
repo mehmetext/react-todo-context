@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 export default function Todo() {
 	const { todoID } = useParams();
-	const { todos } = useTodo();
+	const { todos, dispatch } = useTodo();
 	const [todo, setTodo] = useState(false);
 	const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,10 @@ export default function Todo() {
 		}
 	};
 
+	const handleCompleted = () => {
+		dispatch({ type: "TOGGLE-COMPLETED", value: todoID });
+	};
+
 	if (loading) return <p>Loading...</p>;
 
 	if (!todo) return <NoTodo />;
@@ -44,6 +48,16 @@ export default function Todo() {
 				<title>Todo - Todo App</title>
 			</Helmet>
 			<p>{todo.text}</p>
+			<label>
+				<input
+					defaultChecked={todo.completed}
+					onChange={handleCompleted}
+					type="checkbox"
+				/>{" "}
+				Tamamlandı
+			</label>
+			<br />
+			<br />
 			<button onClick={handleDelete}>Sil</button>
 		</>
 	);

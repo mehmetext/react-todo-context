@@ -31,7 +31,21 @@ export default function todoReducer(state, action) {
 			return {
 				...state,
 				todos: deletingTodos,
-				todo: "",
+			};
+
+		case "TOGGLE-COMPLETED":
+			const toggleCompletedTodos = state.todos.map((item) => {
+				if (item.id == action.value) {
+					item.completed = !item.completed;
+				}
+				return item;
+			});
+
+			localStorage.setItem("todos", JSON.stringify(toggleCompletedTodos));
+
+			return {
+				...state,
+				todos: toggleCompletedTodos,
 			};
 
 		case "SET-TODO":

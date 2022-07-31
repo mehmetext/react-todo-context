@@ -9,7 +9,14 @@ export default function TodoList() {
 			<Link to="add-todo">Add New Todo</Link>
 			<ul>
 				{todos.map((item) => (
-					<li key={item.id}>
+					<li
+						key={item.id}
+						style={{
+							textDecoration: item.completed
+								? "line-through"
+								: null,
+						}}
+					>
 						<Link to={`/${item.id}`}>{item.text}</Link>
 					</li>
 				))}
