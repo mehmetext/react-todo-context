@@ -35,7 +35,7 @@ export default function todoReducer(state, action) {
 
 		case "TOGGLE-COMPLETED":
 			const toggleCompletedTodos = state.todos.map((item) => {
-				if (item.id == action.value) {
+				if (item.id === action.value) {
 					item.completed = !item.completed;
 				}
 				return item;

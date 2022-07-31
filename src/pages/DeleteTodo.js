@@ -11,16 +11,20 @@ export default function DeleteTodo() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		setLoading(true);
-		setTimeout(() => {
-			dispatch({ type: "DELETE-TODO", value: todoID });
-			setLoading(false);
-
+		const findTodo = () => {
+			setLoading(true);
 			setTimeout(() => {
-				navigate("/");
-			}, 1500);
-		}, 250);
-	}, []);
+				dispatch({ type: "DELETE-TODO", value: todoID });
+				setLoading(false);
+
+				setTimeout(() => {
+					navigate("/");
+				}, 1500);
+			}, 250);
+		};
+
+		findTodo();
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<>
