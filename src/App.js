@@ -2,7 +2,7 @@ import { TodoProvider } from "./contexts";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import AddTodo from "./pages/AddTodo";
-import TodoList from "./pages/TodoList";
+import TodoList from "./components/TodoList";
 import Todo from "./pages/Todo";
 import DeleteTodo from "./pages/DeleteTodo";
 

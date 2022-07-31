@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTodo } from "../contexts";
 import NoTodo from "../components/NoTodo";
+import { Helmet } from "react-helmet";
 
 export default function Todo() {
 	const { todoID } = useParams();
@@ -39,6 +40,9 @@ export default function Todo() {
 
 	return (
 		<>
+			<Helmet>
+				<title>Todo - Todo App</title>
+			</Helmet>
 			<p>{todo.text}</p>
 			<button onClick={handleDelete}>Sil</button>
 		</>

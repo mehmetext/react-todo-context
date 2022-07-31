@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTodo } from "../contexts";
+import { Helmet } from "react-helmet";
 
 export default function DeleteTodo() {
 	const { todoID } = useParams();
@@ -21,7 +22,16 @@ export default function DeleteTodo() {
 		}, 250);
 	}, []);
 
-	if (loading) return <p>Siliniyor...</p>;
-
-	return <p>Silindi, yönlendiriliyorsunuz...</p>;
+	return (
+		<>
+			<Helmet>
+				<title>Deleting Todo - Todo App</title>
+			</Helmet>
+			{loading ? (
+				<p>Siliniyor...</p>
+			) : (
+				<p>Silindi, yönlendiriliyorsunuz...</p>
+			)}
+		</>
+	);
 }

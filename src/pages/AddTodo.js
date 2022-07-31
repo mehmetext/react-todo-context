@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useTodo } from "../contexts";
 
 export default function AddTodo() {
@@ -15,6 +16,9 @@ export default function AddTodo() {
 
 	return (
 		<>
+			<Helmet>
+				<title>Add Todo - Todo App</title>
+			</Helmet>
 			<form onSubmit={handleSubmit}>
 				<input value={todo} onChange={handleOnChange} />
 				<button disabled={!todo}>Add</button>
