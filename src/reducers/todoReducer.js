@@ -21,11 +21,24 @@ export default function todoReducer(state, action) {
 				todo: "",
 			};
 
+		case "DELETE-TODO":
+			const deletingTodos = state.todos.filter(
+				(item) => item.id !== action.value
+			);
+
+			localStorage.setItem("todos", JSON.stringify(deletingTodos));
+
+			return {
+				...state,
+				todos: deletingTodos,
+				todo: "",
+			};
+
 		case "SET-TODO":
 			localStorage.setItem("todo", action.value);
 			return { ...state, todo: action.value };
 
 		default:
-			break;
+			return { ...state };
 	}
 }

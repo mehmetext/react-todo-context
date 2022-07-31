@@ -1,14 +1,13 @@
-import AddTodo from "../components/AddTodo";
 import Header from "../components/Header";
-import TodoList from "../components/TodoList";
 import "../styles/style.css";
+import { Outlet } from "react-router-dom";
 
 export default function Home() {
 	return (
-		<div>
+		<>
 			<Header />
-			<AddTodo />
-			<TodoList />
-		</div>
+			<hr />
+			<Outlet />
+		</>
 	);
 }
